@@ -24,8 +24,11 @@ run.cytonorm <- function(x,
 library(devtools)
 library(CytoNorm)
 
+
 # if (!requireNamespace("BiocManager", quietly = TRUE))
 #   install.packages("BiocManager")
+#
+# library(BiocManager)
 #
 # BiocManager::install("FlowSOM") ### FlowSOM
 
@@ -35,10 +38,6 @@ library(FlowSOM)
 library(Spectre)
 library(flowCore)
 library(umap)
-
-library
-
-
 
 # Identifying the data
 
