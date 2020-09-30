@@ -22,7 +22,7 @@
 #' @param col.max.threshold DEFAULT = 0.995 Numeric. Define maximum threshold for colour scale. Values above this limit will be coloured as the chosen maximum threshold.
 #' @param align.xy.by DEFAULT = dat. data.table Sample to use to determine minimum and maximum X and Y axis values.
 #' @param align.col.by DEFAULT = dat. data.table. Sample to use to determine minimum and maximum colour values.
-#' @param title DEFAULT = col.axis. Character. Title for the plot.
+#' @param figure.title DEFAULT = col.axis. Character. Title for the plot.
 #' @param dot.size DEFAULT = 1. Numeric. Size of the dots.
 #' @param plot.width DEFAULT = 9. Width of the ggplot when saved to disk.
 #' @param plot.height DEFAULT = 7. Height of the ggplot when saved to disk.
@@ -82,7 +82,7 @@ make.colour.plot <- function(dat,
 
                              regression.line = NULL, # "lm" # "loess"
 
-                             title = col.axis,
+                             figure.title = col.axis,
                              filename = NULL,
 
                              dot.size = 1,
@@ -306,11 +306,11 @@ make.colour.plot <- function(dat,
 
   ### Add title
 
-      if(is.null(title)){
-        title <- "Density"
+      if(is.null(figure.title)){
+        figure.title <- "Density"
       }
 
-      p <- p + ggtitle(title)
+      p <- p + ggtitle(figure.title)
 
   ### Set up axis
       p <- p + scale_x_continuous(breaks = scales::pretty_breaks(n = 8), name = x.axis, limits = c(Xmin, Xmax))
@@ -438,7 +438,7 @@ make.colour.plot <- function(dat,
         }
 
         if(is.null(filename)){
-          filename <- paste0(lb, " plot - ", title, " - plotted on ", x.axis, " by ", y.axis, ".png")
+          filename <- paste0(lb, " plot - ", figure.title, " - plotted on ", x.axis, " by ", y.axis, ".png")
         }
 
         ggsave(filename = filename,
@@ -451,5 +451,5 @@ make.colour.plot <- function(dat,
 
   ### Print plot
       print(p)
-
+      return(p)
 }
