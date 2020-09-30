@@ -142,25 +142,51 @@ make.multi.plot <- function(dat,
         align.col.by <- plot.dat
       }
 
-      plots[[plot.nme]] <- make.colour.plot(dat = plot.dat, #instead, use d[d[$Sample][plot.by] == to.plot[i], ] ## Spectre::
-                                            x.axis = x.axis,
-                                            y.axis = y.axis,
-                                            col.axis = i,
-                                            col.type = col.type,
-                                            hex = hex,
-                                            hex.bins = hex.bins,
-                                            title = plot.nme,
-                                            align.xy.by = align.xy.by, ###
-                                            align.col.by = align.col.by, ###
-                                            colours = colours,
-                                            col.min.threshold = col.min.threshold,
-                                            col.max.threshold = col.max.threshold,
-                                            dot.size = dot.size,
-                                            path = path,
-                                            plot.width = plot.width,
-                                            plot.height = plot.height,
-                                            blank.axis = blank.axis,
-                                            save.to.disk = save.each.plot)
+      if (blank.axis) {
+        plots[[plot.nme]] <- make.colour.plot(dat = plot.dat, #instead, use d[d[$Sample][plot.by] == to.plot[i], ] ## Spectre::
+                                              x.axis = x.axis,
+                                              y.axis = y.axis,
+                                              col.axis = i,
+                                              col.type = col.type,
+                                              hex = hex,
+                                              hex.bins = hex.bins,
+                                              align.xy.by = align.xy.by, ###
+                                              align.col.by = align.col.by, ###
+                                              colours = colours,
+                                              col.min.threshold = col.min.threshold,
+                                              col.max.threshold = col.max.threshold,
+                                              dot.size = dot.size,
+                                              path = path,
+                                              plot.width = plot.width,
+                                              plot.height = plot.height,
+                                              blank.axis = blank.axis,
+                                              save.to.disk = save.each.plot,
+                                              figure.title = '',
+                                              legend.loc = 'none',
+                                              filename = paste0(col.type, " plot - ", plot.nme, " - plotted on ", x.axis, " by ", y.axis, ".png"))
+      }
+      else {
+        plots[[plot.nme]] <- make.colour.plot(dat = plot.dat, #instead, use d[d[$Sample][plot.by] == to.plot[i], ] ## Spectre::
+                                              x.axis = x.axis,
+                                              y.axis = y.axis,
+                                              col.axis = i,
+                                              col.type = col.type,
+                                              hex = hex,
+                                              hex.bins = hex.bins,
+                                              figure.title = plot.nme,
+                                              align.xy.by = align.xy.by, ###
+                                              align.col.by = align.col.by, ###
+                                              colours = colours,
+                                              col.min.threshold = col.min.threshold,
+                                              col.max.threshold = col.max.threshold,
+                                              dot.size = dot.size,
+                                              path = path,
+                                              plot.width = plot.width,
+                                              plot.height = plot.height,
+                                              blank.axis = blank.axis,
+                                              save.to.disk = save.each.plot)
+      }
+      
     }
 
     ## Add density plot (if desired)
