@@ -349,6 +349,7 @@ get.transitions.as.edges <- function(dat, timepoints, timepoint.col,
     
     # Order the vector based on the length of each element. 
     simple.clusters <- simple.clusters[order(nchar(simple.clusters), simple.clusters, decreasing = TRUE)]
+    pipe.clusters <- pipe.clusters[order(nchar(pipe.clusters), pipe.clusters, decreasing = TRUE)]
     
     curr.tp.dat <- dat[dat[[timepoint.col]] == timepoints[tp.idx], ]
     curr.tp.clust <- mixedsort(unique(curr.tp.dat[[cluster.col]]))
